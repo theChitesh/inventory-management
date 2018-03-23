@@ -51,7 +51,9 @@ public class BusinessRulesTest {
 	
 	@Test
 	public void testPromotionNotSet() {
-		LocalDate pastDate = LocalDate.of(2017, 9, 25);
+
+		LocalDate pastDate = LocalDate.now().minusDays(5);
+
 		stock.setEntryDate(pastDate);
 		Stock updatedStock = bRules.enrichStockParameters(stock);
 		Assert.assertFalse(updatedStock.getActivatePromotion());
