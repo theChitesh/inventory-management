@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="true">
+  <contextName>ls-ng-log</contextName>
+  <jmxConfigurator/>
+
+  <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%-4thread] %-5level %-35.35logger{30} - %msg%n%ex{full, org.springframework,
+        org.apache.maven, javax.servlet, org.testng, sun.reflect}
+      </pattern>
+    </encoder>
+  </appender>
+
+  <logger name="com.inventory" level="info" additivity="false">
+    <appender-ref ref="console"/>
+  </logger>
+
+  <root level="warn">
+    <appender-ref ref="console"/>
+  </root>
+
+</configuration>
