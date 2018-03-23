@@ -53,7 +53,8 @@ public class BusinessRules {
 	 */
 	private int getStockDurationInInventory(final LocalDate entryDate) {
 
-		int duartionIndays = Period.between(entryDate,  LocalDate.now()).getDays();
+		LocalDate today = LocalDate.now();
+		int duartionIndays = (int) ChronoUnit.DAYS.between(entryDate, today);
 		return duartionIndays;
 	}
 	

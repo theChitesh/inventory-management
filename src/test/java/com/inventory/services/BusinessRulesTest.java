@@ -43,7 +43,8 @@ public class BusinessRulesTest {
 	public void testForDurationOfStock() {
 		
 		LocalDate today = LocalDate.now();
-		Integer duration = Period.between(stock.getEntryDate(), today).getDays();
+//		Integer duration = Period.between(stock.getEntryDate(), today).getDays();
+		Integer duration = Math.toIntExact(ChronoUnit.DAYS.between(stock.getEntryDate(), LocalDate.now()));
 		Stock updatedStock = bRules.enrichStockParameters(stock);
 		Assert.assertEquals(duration, updatedStock.getDaysInInventory());
 
@@ -89,7 +90,7 @@ public class BusinessRulesTest {
 	public void testInventoryCostSet() {
 		int amountPerDay = 10;
 		
-		LocalDate entryDate = LocalDate.of(2017, 9, 20);
+		LocalDate entryDate = LocalDate.of(2017, 12, 31);
 		
 		int duartionIndays = (int) ChronoUnit.DAYS.between(entryDate, LocalDate.now());
 		
